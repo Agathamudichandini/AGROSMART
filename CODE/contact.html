@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us - AGROSMART</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">AGRISMART</div>
+    <nav>
+        <a href="HOME.html">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <!-- <a href="login.html">Login</a> -->
+    </nav>
+</header>
+
+<section class="contact-hero">
+    <h1>Contact Us</h1>
+    <p>We are here to help you protect your plants 🌿</p>
+</section>
+
+
+<section class="contact-container">
+
+    <div class="contact-info">
+        <h2>Get In Touch</h2>
+        <p><strong>Email:</strong> support@agrismart.com</p>
+        <p><strong>Phone:</strong> +91 9876543210</p>
+        <p><strong>Location:</strong> Chennai, India</p>
+    </div>
+
+    <div class="contact-form">
+        <h2>Send Message</h2>
+        
+            <form id="contactForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 AGRISMART | Smart Farming Solutions</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const form = document.getElementById("contactForm");
+
+    if(!form){
+        console.log("Form not found ❌");
+        return;
+    }
+
+    form.addEventListener("submit", async function(e){
+        e.preventDefault();
+
+        const name = form.querySelector("input[type='text']").value;
+        const email = form.querySelector("input[type='email']").value;
+        const message = form.querySelector("textarea").value;
+
+        try {
+            const response = await fetch("http://localhost:5000/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name, email, message })
+            });
+
+            const data = await response.json();
+
+            console.log("Response:", data);
+            alert(data.message);
+
+            form.reset();
+
+        } catch (error) {
+            console.log("Fetch Error ❌", error);
+        }
+    });
+
+});
+</script>
+
+<!-- <script src="auto-translate.js"></script> -->
+</body>
+</html>

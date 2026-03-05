@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plants</title>
+    <link rel="stylesheet" href="plants.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">AGRO SMART</div>
+</header>
+ <nav>
+        <a href="category.html">Back</a>
+    </nav>
+
+<div class="container">
+    <h1 id="pageTitle"></h1>
+
+    <div class="card-container" id="plantContainer"></div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+const data = {
+flowers: [
+    {name:"Rose", link:"plant-details.html?plant=rose"},
+    {name:"Jasmine", link:"plant-details.html?plant=jasmine"},
+    {name:"Hibiscus", link:"plant-details.html?plant=hibiscus"},
+    {name:"Marigold", link:"plant-details.html?plant=marigold"},
+    {name:"Sunflower", link:"plant-details.html?plant=sunflower"}
+],
+vegetables: [
+    {name:"Tomato", link:"plant-details.html?plant=tomato"},
+    {name:"Potato", link:"plant-details.html?plant=potato"},
+    {name:"Chilli", link:"plant-details.html?plant=chilli"}
+],
+fruits: [
+    {name:"Mango", link:"plant-details.html?plant=mango"},
+    {name:"Banana", link:"plant-details.html?plant=banana"}
+],
+grains: [
+    {name:"Rice", link:"plant-details.html?plant=rice"},
+    {name:"Wheat", link:"plant-details.html?plant=wheat"}
+]
+};
+
+const params = new URLSearchParams(window.location.search);
+const type = params.get("type");
+
+if (!type || !data[type]) {
+    document.getElementById("pageTitle").innerText = "No Category Selected";
+    return;
+}
+
+document.getElementById("pageTitle").innerText = type.toUpperCase() + " Plants";
+
+let container = document.getElementById("plantContainer");
+
+data[type].forEach(function(item){
+    let div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = `<h3>${item.name}</h3>`;
+    div.onclick = function(){
+        window.location.href = item.link;
+    }
+    container.appendChild(div);
+});
+
+});
+</script>
+<!-- <script src="auto-translate.js"></script> -->
+
+</body>
+</html>

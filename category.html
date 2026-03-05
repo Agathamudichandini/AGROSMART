@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plant Categories - AGROSMART</title>
+    <link rel="stylesheet" href="category.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+<header class="navbar">
+   
+     <div class="logo">
+    <i class="fas fa-leaf"></i> AGROSMART</div>
+      <nav>
+    <a href="HOME.HTML"><i class="fas fa-home"></i> Home</a>
+    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+               
+</nav>
+</header>
+
+<nav class="back-nav">
+    <a href="disease.html">Back</a>
+</nav>
+
+<section class="container">
+
+    <h1>Select Plant Category</h1>
+
+    <div class="card-container">
+
+        <div class="card" onclick="selectCategory('flowers')">
+            <img src="images/flowers.jpg" alt="Flowers">
+            <h3>Flowers</h3>
+        </div>
+
+        <div class="card" onclick="selectCategory('vegetables')">
+            <img src="images/vegetables.jpg" alt="Vegetables">
+            <h3>Vegetables</h3>
+        </div>
+
+        <div class="card" onclick="selectCategory('fruits')">
+            <img src="images/fruits.jpg" alt="Fruits">
+            <h3>Fruits</h3>
+        </div>
+
+        <div class="card" onclick="selectCategory('grains')">
+            <img src="images/grains.jpg" alt="Grains">
+            <h3>Grains</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- GET TIPS SECTION -->
+
+<section class="tips-section">
+
+    <h2>Complete Growing Guide</h2>
+
+    <p>
+        Click below to view complete A-Z cultivation guidance including
+        soil preparation, watering methods, fertilizer management,
+        pest control techniques, disease prevention and productivity improvement
+        practices for farmers, nursery owners, gardeners and home growers.
+    </p>
+
+ <a href="planttracker.html" class="btn-start">
+    <button> Track your plant<i class="fas fa-arrow-right"></i></button>
+</a>
+    <!-- <button onclick="showTips()">Get Tips</button> -->
+<div class="button-group">
+    <button onclick="showTips()">Get Tips</button>
+
+    <button class="symptom-btn" onclick="goToDetection()">
+        On Symptoms Based
+    </button>
+</div>
+    <div id="tipsContent"></div>
+
+</section>
+
+<script>
+
+// FEATURE 1: Redirect to plants page
+function selectCategory(type){
+    localStorage.setItem("selectedCategory", type);
+    window.location.href = "plants.html?type=" + type;
+}
+
+
+function goToDetection(){
+    window.location.href = "detection.html";
+}
+
+
+
+// FEATURE 2: Show Tips Based on Selected Category
+function showTips(){
+
+    let category = localStorage.getItem("selectedCategory");
+    const tipsBox = document.getElementById("tipsContent");
+
+    if(!category){
+        tipsBox.innerHTML = "<p>Please select a plant category above first.</p>";
+        return;
+    }
+
+    if(category === "flowers"){
+tipsBox.innerHTML = `
+<h2 id="plantTitle">Flower Cultivation – Complete A-Z Guide</h2>
+
+<div class="info-box">
+<h3>🌱 Soil Preparation</h3>
+<p>
+Flowers require loose, well-drained and nutrient-rich soil.
+Mix red soil, compost and cocopeat in equal proportions.
+Maintain soil pH between 6.0 and 7.0 for healthy growth.
+Good drainage prevents fungal infections and root rot.
+</p>
+</div>
+
+<div class="info-box">
+<h3>☀ Sunlight Requirement</h3>
+<p>
+Most flowering plants require 4–6 hours of direct sunlight daily.
+Insufficient sunlight leads to weak stems and poor blooming.
+Balcony growers should place pots near south-facing windows.
+</p>
+</div>
+
+<div class="info-box">
+<h3>💧 Watering Management</h3>
+<div class="points">
+<span>Water only when topsoil is dry</span>
+<span>Avoid water stagnation</span>
+<span>Use morning watering schedule</span>
+<span>Ensure proper drainage holes</span>
+</div>
+</div>
+
+<div class="info-box">
+<h3>🛡 Disease & Pest Control</h3>
+<p>
+Common diseases include powdery mildew and leaf spots.
+Aphids and mites attack buds and leaves.
+Spray neem oil every 10 days as preventive measure.
+Maintain plant spacing for proper air circulation.
+</p>
+</div>
+
+<div class="info-box">
+<h3>🏪 For Nursery Owners</h3>
+<p>
+Maintain healthy mother plants for propagation.
+Label varieties clearly for customers.
+Monitor seasonal demand and stock accordingly.
+Follow hygienic pruning and cutting practices.
+</p>
+</div>
+
+<div class="info-box">
+<h3>🏡 For Home Gardeners</h3>
+<p>
+Choose compact varieties suitable for pots.
+Use organic compost every 15 days.
+Rotate pots occasionally for even sunlight exposure.
+Remove dried flowers to encourage reblooming.
+</p>
+</div>
+`;
+}
+
+   if(category === "vegetables"){
+tipsBox.innerHTML = `
+<h2 id="plantTitle">Vegetable Cultivation – Complete A-Z Guide</h2>
+
+<div class="info-box">
+<h3>🌱 Soil Preparation</h3>
+<p>
+Vegetables grow best in loose, fertile soil rich in organic matter.
+Before planting, mix compost or farmyard manure into the soil.
+Maintain soil pH between 6.0 and 7.0 for maximum nutrient absorption.
+Crop rotation helps maintain long-term soil fertility.
+</p>
+</div>
+
+<div class="info-box">
+<h3>💧 Water Management</h3>
+<div class="points">
+<span>Drip irrigation is ideal for farmers</span>
+<span>Water early morning for best absorption</span>
+<span>Avoid overwatering to prevent root rot</span>
+<span>Ensure proper drainage in raised beds</span>
+</div>
+</div>
+
+<div class="info-box">
+<h3>🌿 Nutrient & Fertilizer Management</h3>
+<p>
+Apply balanced NPK fertilizers depending on crop stage.
+Leafy vegetables require higher nitrogen.
+Fruit vegetables require more potassium during flowering stage.
+Organic compost improves soil structure and microbial activity.
+</p>
+</div>
+
+<div class="info-box">
+<h3>🛡 Pest & Disease Control</h3>
+<p>
+Common pests include aphids, caterpillars and whiteflies.
+Use neem oil spray every 7–10 days.
+For fungal diseases, use Trichoderma or copper-based fungicides.
+Maintain spacing between plants to reduce infection spread.
+</p>
+</div>
+
+<div class="info-box">
+<h3>👨‍🌾 For Farmers</h3>
+<p>
+Practice intercropping and mulching to conserve moisture.
+Use certified seeds for better yield.
+Monitor crops regularly for early pest detection.
+</p>
+</div>
+
+<div class="info-box">
+<h3>🏡 For Home Gardeners</h3>
+<p>
+Use grow bags or terrace containers with good drainage.
+Harvest vegetables at proper maturity stage for better taste.
+Rotate seasonal crops to avoid soil nutrient depletion.
+</p>
+</div>
+`;
+}
+    if(category === "fruits"){
+tipsBox.innerHTML = `
+<h2 id="plantTitle">Fruit Cultivation – Complete A-Z Guide</h2>
+
+<div class="info-box">
+<h3>🌱 Planting & Pit Preparation</h3>
+<p>
+Dig pits of 2x2 feet depth and width.
+Mix compost, red soil and sand before planting.
+Ensure proper spacing (8–10 feet) between fruit trees.
+</p>
+</div>
+
+<div class="info-box">
+<h3>☀ Sunlight & Climate</h3>
+<p>
+Fruit trees require 6–8 hours of direct sunlight daily.
+Proper air circulation reduces fungal infections.
+Choose varieties suitable for your regional climate.
+</p>
+</div>
+
+<div class="info-box">
+<h3>💧 Irrigation & Mulching</h3>
+<div class="points">
+<span>Drip irrigation improves water efficiency</span>
+<span>Mulching retains soil moisture</span>
+<span>Avoid water stagnation near roots</span>
+<span>Reduce watering during rainy season</span>
+</div>
+</div>
+
+<div class="info-box">
+<h3>✂ Pruning & Maintenance</h3>
+<p>
+Regular pruning improves fruit size and quality.
+Remove dead and infected branches immediately.
+Apply organic manure twice a year for sustained growth.
+</p>
+</div>
+
+<div class="info-box">
+<h3>🛡 Pest & Disease Control</h3>
+<p>
+Common issues include fruit flies and leaf curl.
+Use pheromone traps for fruit flies.
+Copper-based sprays help prevent fungal diseases.
+Monitor trees regularly for early symptom detection.
+</p>
+</div>
+
+<div class="info-box">
+<h3>🏪 For Nursery Owners</h3>
+<p>
+Maintain grafted healthy saplings.
+Proper labeling and disease-free propagation is essential.
+Seasonal demand planning increases profitability.
+</p>
+</div>
+`;
+}
+
+    if(category === "grains"){
+tipsBox.innerHTML = `
+<h2 id="plantTitle">Grain Cultivation – Complete A-Z Guide</h2>
+
+<div class="info-box">
+<h3>🚜 Field Preparation</h3>
+<p>
+Proper ploughing and leveling ensures uniform irrigation.
+Remove weeds before sowing.
+Use certified high-yield seed varieties for better productivity.
+</p>
+</div>
+
+<div class="info-box">
+<h3>🌱 Sowing & Spacing</h3>
+<p>
+Maintain recommended spacing depending on grain type.
+Timely sowing ensures proper crop development.
+Use seed treatment to prevent early-stage diseases.
+</p>
+</div>
+
+<div class="info-box">
+<h3>💧 Irrigation Management</h3>
+<div class="points">
+<span>Critical watering during flowering stage</span>
+<span>Avoid excess irrigation</span>
+<span>Ensure uniform water distribution</span>
+<span>Monitor soil moisture regularly</span>
+</div>
+</div>
+
+<div class="info-box">
+<h3>🌿 Fertilizer Management</h3>
+<p>
+Apply nitrogen in split doses for better absorption.
+Follow soil testing recommendations before fertilizer use.
+Organic manure improves soil microbial activity.
+</p>
+</div>
+
+<div class="info-box">
+<h3>🛡 Pest & Weed Control</h3>
+<p>
+Control weeds within first 30 days after sowing.
+Use integrated pest management practices.
+Monitor crops for stem borers and fungal infections.
+</p>
+</div>
+
+<div class="info-box">
+<h3>🌾 Harvesting & Storage</h3>
+<p>
+Harvest grains only after full maturity.
+Dry thoroughly before storage to prevent fungal growth.
+Store in moisture-free and ventilated areas.
+</p>
+</div>
+`;
+}
+}
+
+</script>
+
+</body>
+</html>

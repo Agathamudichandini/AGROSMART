@@ -1,0 +1,122 @@
+/* BODY */
+body{
+    font-family: 'Segoe UI', sans-serif;
+    background:#f4f6f8;   /* clean background */
+    padding:30px;
+    margin:0;
+}
+
+/* HEADING */
+h1{
+    text-align:center;
+    margin-bottom:30px;
+    color:#2e7d32;
+}
+
+/* FORM BOX */
+.form-box{
+    background:white;
+    padding:20px;
+    width:320px;
+    margin:0 auto 40px auto;
+    border-radius:15px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* INPUT FIELDS */
+input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+/* BUTTONS */
+button{
+    padding:10px;
+    width:48%;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:10px;
+    background:#2e7d32;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
+}
+
+button:hover{
+    opacity:0.85;
+}
+
+.danger{
+    background:#d32f2f;
+}
+
+/* CARD CONTAINER (SIDE BY SIDE) */
+#plantList{
+    display:flex;
+    flex-wrap:wrap;         /* allows wrapping */
+    gap:20px;               /* spacing between cards */
+    justify-content:center; /* center align */
+}
+
+/* CARD DESIGN */
+.card{
+    background:white;
+    padding:20px;
+    width:320px;
+    border-radius:15px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    position:relative;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* STATUS BADGE */
+.status{
+    position:absolute;
+    top:15px;
+    right:15px;
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:12px;
+    color:white;
+    font-weight:500;
+}
+
+/* STATUS COLORS */
+.green{ background:#4caf50; }
+.orange{ background:#ff9800; }
+.red{ background:#f44336; }
+
+/* PROGRESS BAR */
+.progress{
+    height:8px;
+    background:#ddd;
+    border-radius:5px;
+    margin:10px 0;
+}
+
+.progress-fill{
+    height:8px;
+    background:#4caf50;
+    border-radius:5px;
+}
+
+/* RESPONSIVE (Mobile View) */
+@media(max-width:768px){
+    #plantList{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .card{
+        width:90%;
+    }
+}

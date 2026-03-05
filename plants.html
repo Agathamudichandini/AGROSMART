@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plants</title>
+    <link rel="stylesheet" href="plants.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+    
+      <div class="logo">
+    <i class="fas fa-leaf"></i> AGROSMART</div>
+</header>
+ <nav>
+        <a href="category.html">Back</a>
+    </nav>
+
+<div class="container">
+    <h1 id="pageTitle"></h1>
+
+    <div class="card-container" id="plantContainer"></div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+const data = {
+flowers: [
+    {name:"Rose", link:"plant-details.html?plant=rose"},
+    {name:"Jasmine", link:"plant-details.html?plant=jasmine"},
+    {name:"Hibiscus", link:"plant-details.html?plant=hibiscus"},
+    {name:"Marigold", link:"plant-details.html?plant=marigold"},
+    {name:"Sunflower", link:"plant-details.html?plant=sunflower"}
+],
+vegetables: [
+    {name:"Brinjal", link:"plant-details.html?plant=brinjal"},
+    {name:"Potato", link:"plant-details.html?plant=potato"},
+    {name:"Chilli", link:"plant-details.html?plant=chilli"},
+       {name:"Carrot", link:"plant-details.html?plant=carrot"},
+        {name:"Cabbage", link:"plant-details.html?plant=cabbage"}
+],
+fruits: [
+    {name:"Mango", link:"plant-details.html?plant=mango"},
+    {name:"Guava", link:"plant-details.html?plant=guava"},
+     {name:"Sapota", link:"plant-details.html?plant=sapota"},
+    {name:"Grapes", link:"plant-details.html?plant=grapes"},
+        {name:"Papaya", link:"plant-details.html?plant=papaya"}
+],
+grains: [
+    {name:"Finger Millet (Ragi)", link:"plant-details.html?plant=fingerMillet"},
+    {name:"Wheat", link:"plant-details.html?plant=wheat"},
+     {name:"Maize", link:"plant-details.html?plant=maize"},
+      {name:"Barley", link:"plant-details.html?plant=barley"},
+     {name:"Pearl Millet (Bajra)", link:"plant-details.html?plant=bajra"}
+   
+]
+};
+
+const params = new URLSearchParams(window.location.search);
+const type = params.get("type");
+
+if (!type || !data[type]) {
+    document.getElementById("pageTitle").innerText = "No Category Selected";
+    return;
+}
+
+document.getElementById("pageTitle").innerText = type.toUpperCase() + " Plants";
+
+let container = document.getElementById("plantContainer");
+
+data[type].forEach(function(item){
+    let div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = `<h3>${item.name}</h3>`;
+    div.onclick = function(){
+        window.location.href = item.link;
+    }
+    container.appendChild(div);
+});
+
+});
+</script>
+<script src="auto-translate.js"></script>
+
+</body>
+</html>

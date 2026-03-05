@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plant Diseases</title>
+    <link rel="stylesheet" href="disease.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">AGROSMART</div>
+    <nav>
+        <a href="HOME.html">Home</a>
+       <a href="about.html">About</a>
+       <a href="contact.html">Contact</a>
+         <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<section class="container">
+
+    <h1>Plant Diseases</h1>
+
+    <!-- Search Bar -->
+    <input type="text" id="searchInput" placeholder="Search disease..." onkeyup="searchDisease()">
+
+    <!-- Disease Cards -->
+    <div class="card-container" id="diseaseList">
+
+        <div class="card">
+            <a href="details.html?disease=powdery">
+            <img src="images/powderymildew.png" alt="">
+            <h3>Powdery Mildew</h3>
+              </a>
+
+        </div>
+
+        <div class="card">
+                <a href="details.html?disease=leafspot">
+            <img src="images/black spot.png" alt="">
+            <h3>Leaf Spot</h3>
+                </a>
+        </div>
+
+        <div class="card">
+                <a href="details.html?disease=downy">
+            <img src="images/downymildew.png" alt="">
+            <h3>Downy Mildew</h3>
+                </a>
+        </div>
+
+        <div class="card">
+                <a href="details.html?disease=blight">
+            <img src="images/tomatoblight.png" alt="">
+            <h3>Blight</h3>
+                </a>
+        </div>
+         <div class="card">
+                <a href="details.html?disease=botrytis">
+            <img src="images/Botrytis blight.png" alt="">
+            <h3>Botrytis Blight</h3>
+                </a>
+        </div>
+         <div class="card">
+                <a href="details.html?disease=verticillium">
+            <img src="images/Verticillium wilt.png" alt="">
+            <h3>Verticillium Wilt</h3>
+                </a>
+        </div>
+         <div class="card">
+                <a href="details.html?disease=fusarium">
+            <img src="images/Fusarium Wilt.png" alt="">
+            <h3>Fusarium Wilt</h3>
+                </a>
+        </div>
+
+        <div class="card">
+                <a href="details.html?disease=rust">
+            <img src="images/rust.png" alt="">
+            <h3>Rust Disease</h3>
+                </a>
+        </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:30px;">
+    <a href="category.html">
+        <button style="
+            padding:12px 25px;
+            background:#2e7d32;
+            color:white;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+            font-size:16px;">
+            Know More →
+        </button>
+    </a>
+</div>
+
+</section>
+
+<script src="disease.js"></script>
+<!-- <script src="auto-translate.js"></script> -->
+</body>
+</html>

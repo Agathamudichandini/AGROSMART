@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us - AGROSMART</title>
+    <link rel="stylesheet" href="contact.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+   
+     <div class="logo">
+        
+    <i class="fas fa-leaf"></i> AGROSMART</div>
+     <nav>
+    <a href="HOME.HTML"><i class="fas fa-home"></i> Home</a>
+    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+               
+</nav>
+</header>
+
+<section class="contact-hero">
+    <h1>Contact Us</h1>
+    <p>We are here to help you protect your plants 🌿</p>
+</section>
+
+<section class="contact-container">
+
+    <div class="contact-info">
+        <h2>Get In Touch</h2>
+        <p><strong>Email:</strong> support@agrismart.com</p>
+        <p><strong>Phone:</strong> +91 9876543210</p>
+        <p><strong>Location:</strong> Chennai, India</p>
+    </div>
+
+    <div class="contact-form">
+        <h2>Send Message</h2>
+
+        <form id="contactForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- Feedback Button -->
+        <div class="feedback-section">
+            <button id="openFeedback">Give Feedback</button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Feedback Popup -->
+<div id="feedbackPopup" class="feedback-popup">
+    <div class="feedback-box">
+        <h2>Share Your Experience</h2>
+
+        <form id="feedbackForm">
+            <input type="text" placeholder="Your Name" required>
+
+            <textarea placeholder="Your Experience" rows="4" required></textarea>
+
+            <select required>
+                <option value="">Rate Us</option>
+                <option value="1">⭐ 1</option>
+                <option value="2">⭐ 2</option>
+                <option value="3">⭐ 3</option>
+                <option value="4">⭐ 4</option>
+                <option value="5">⭐ 5</option>
+            </select>
+
+            <button type="submit">Submit Feedback</button>
+            <button type="button" id="closeFeedback">Close</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 AGRISMART | Smart Farming Solutions</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    /* ---------------- CONTACT FORM ---------------- */
+
+    const contactForm = document.getElementById("contactForm");
+
+    if(contactForm){
+        contactForm.addEventListener("submit", async function(e){
+            e.preventDefault();
+
+            const name = contactForm.querySelector("input[type='text']").value;
+            const email = contactForm.querySelector("input[type='email']").value;
+            const message = contactForm.querySelector("textarea").value;
+
+            try {
+                const response = await fetch("http://localhost:5000/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, email, message })
+                });
+
+                const data = await response.json();
+                alert(data.message);
+                contactForm.reset();
+
+            } catch (error) {
+                console.log("Contact Error ❌", error);
+                alert("Server not running ❌");
+            }
+        });
+    }
+
+    /* ---------------- FEEDBACK SYSTEM ---------------- */
+
+    const openBtn = document.getElementById("openFeedback");
+    const closeBtn = document.getElementById("closeFeedback");
+    const popup = document.getElementById("feedbackPopup");
+    const feedbackForm = document.getElementById("feedbackForm");
+
+    // Open popup
+    if(openBtn){
+        openBtn.addEventListener("click", function(){
+            popup.style.display = "flex";
+        });
+    }
+
+    // Close popup
+    if(closeBtn){
+        closeBtn.addEventListener("click", function(){
+            popup.style.display = "none";
+        });
+    }
+
+    // Submit feedback
+    if(feedbackForm){
+        feedbackForm.addEventListener("submit", async function(e){
+            e.preventDefault();
+
+            const name = feedbackForm.querySelector("input").value;
+            const experience = feedbackForm.querySelector("textarea").value;
+            const rating = feedbackForm.querySelector("select").value;
+
+            try {
+                const response = await fetch("http://localhost:5000/feedback", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, experience, rating })
+                });
+
+                const data = await response.json();
+                alert(data.message);
+
+                feedbackForm.reset();
+                popup.style.display = "none";
+
+            } catch (error) {
+                console.log("Feedback Error ❌", error);
+                alert("Server not running ❌");
+            }
+        });
+    }
+
+});
+</script>
+
+</body>
+</html>

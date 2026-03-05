@@ -1,0 +1,151 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f8;
+}
+
+/* Navbar */
+.navbar{
+    padding:15px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#2e7d32;
+}
+
+.logo{
+    color:white;
+    font-weight:bold;
+    font-size:20px;
+}
+
+.navbar nav a{
+    margin-left:20px;
+    text-decoration:none;
+    color:white;
+    font-size:14px;
+}
+
+/* Hero */
+.contact-hero{
+    text-align:center;
+    padding:60px 20px;
+    background:#e8f5e9;
+}
+
+.contact-hero h1{
+    font-size:32px;
+    color:#2e7d32;
+    margin-bottom:10px;
+}
+
+/* Container */
+.contact-container{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    padding:50px;
+    flex-wrap:wrap;
+}
+
+/* Info Section */
+.contact-info{
+    background:white;
+    padding:30px;
+    border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    width:300px;
+}
+
+/* Form Section */
+.contact-form{
+    background:white;
+    padding:30px;
+    border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    width:350px;
+}
+
+.contact-form form{
+    display:flex;
+    flex-direction:column;
+}
+
+.contact-form input,
+.contact-form textarea{
+    margin-bottom:15px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.contact-form button{
+    padding:10px;
+    background:#2e7d32;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.contact-form button:hover{
+    background:#1b5e20;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#2e7d32;
+    color:white;
+    margin-top:40px;
+}
+.feedback-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.feedback-section button {
+    padding: 10px 20px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.feedback-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-box {
+    background: white;
+    padding: 30px;
+    width: 350px;
+    border-radius: 8px;
+}
+
+.feedback-box input,
+.feedback-box textarea,
+.feedback-box select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+.feedback-box button {
+    margin-right: 10px;
+}

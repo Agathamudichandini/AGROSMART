@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Disease Detection - AGRISMART</title>
+<link rel="stylesheet" href="detection.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+ <nav>
+        <a href="category.html">Back</a>
+    </nav>
+
+<h1>Plant Disease Detection</h1>
+
+<div class="container">
+
+    <!-- <div class="upload-box">
+        <input type="file" id="plantImage" accept="image/*">
+        <img id="preview" />
+    </div> -->
+
+    <h3>Select Visible Symptoms:</h3>
+
+    <div class="symptoms">
+        <label><input type="checkbox" value="white"> White Powder on Leaves</label>
+        <label><input type="checkbox" value="spots"> Brown/Black Spots</label>
+        <label><input type="checkbox" value="yellow"> Yellowing Leaves</label>
+        <label><input type="checkbox" value="dry"> Dry & Wilting Leaves</label>
+        <label><input type="checkbox" value="root"> Root Damage</label>
+    </div>
+
+    <button onclick="detectDisease()">Detect Disease</button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+// Image Preview
+document.getElementById("plantImage").addEventListener("change", function(event){
+    const reader = new FileReader();
+    reader.onload = function(){
+        document.getElementById("preview").src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+});
+
+
+function detectDisease(){
+
+    const checked = document.querySelectorAll(".symptoms input:checked");
+    const result = document.getElementById("result");
+
+    let disease = "";
+    let details = "";
+
+    let symptoms = Array.from(checked).map(cb => cb.value);
+
+    if(symptoms.includes("white")){
+        disease = "Powdery Mildew";
+        details = `
+        <div class="info-box">
+        <h3>Cause</h3>
+        <p>High humidity and poor air circulation cause fungal growth.</p>
+        </div>
+
+        <div class="info-box">
+        <h3>Symptoms</h3>
+        <p>White powder-like substance appears on leaf surface.</p>
+        </div>
+
+        <div class="info-box">
+        <h3>Solution</h3>
+        <p>Spray neem oil or sulfur-based fungicide every 7 days.</p>
+        </div>
+
+        <div class="info-box">
+        <h3>Prevention</h3>
+        <p>Maintain spacing between plants and avoid overhead watering.</p>
+        </div>
+        `;
+    }
+
+    else if(symptoms.includes("spots")){
+        disease = "Leaf Spot";
+        details = `
+        <div class="info-box">
+        <h3>Cause</h3>
+        <p>Fungal or bacterial infection due to excess moisture.</p>
+        </div>
+
+        <div class="info-box">
+        <h3>Symptoms</h3>
+        <p>Small brown or black circular spots on leaves.</p>
+        </div>
+
+        <div class="info-box">
+        <h3>Solution</h3>
+        <p>Apply copper fungicide and remove infected leaves.</p>
+        </div>
+
+        <div class="info-box">
+        <h3>Prevention</h3>
+        <p>Avoid water stagnation and improve drainage.</p>
+        </div>
+        `;
+    }
+
+    else if(symptoms.includes("yellow")){
+        disease = "Nutrient Deficiency";
+        details = `
+        <div class="info-box">
+        <h3>Cause</h3>
+        <p>Lack of nitrogen, iron or magnesium in soil.</p>
+        </div>
+
+        <div class="info-box">
+        <h3>Solution</h3>
+        <p>Apply balanced NPK fertilizer and organic compost.</p>
+        </div>
+
+        <div class="info-box">
+        <h3>Prevention</h3>
+        <p>Regular soil testing and timely fertilization.</p>
+        </div>
+        `;
+    }
+
+    else if(symptoms.includes("dry")){
+        disease = "Blight";
+        details = `
+        <div class="info-box">
+        <h3>Cause</h3>
+        <p>Fungal infection spreading rapidly in humid conditions.</p>
+        </div>
+
+        <div class="info-box">
+        <h3>Solution</h3>
+        <p>Use Mancozeb spray and remove affected plants.</p>
+        </div>
+
+        <div class="info-box">
+        <h3>Prevention</h3>
+        <p>Ensure proper sunlight and airflow.</p>
+        </div>
+        `;
+    }
+
+    else if(symptoms.includes("root")){
+        disease = "Root Rot";
+        details = `
+        <div class="info-box">
+        <h3>Cause</h3>
+        <p>Overwatering and poor drainage.</p>
+        </div>
+
+        <div class="info-box">
+        <h3>Solution</h3>
+        <p>Reduce watering and apply Trichoderma in soil.</p>
+        </div>
+
+        <div class="info-box">
+        <h3>Prevention</h3>
+        <p>Ensure proper drainage holes in pots or fields.</p>
+        </div>
+        `;
+    }
+
+    else{
+        disease = "No Symptoms Selected";
+        details = "<p>Please select visible symptoms.</p>";
+    }
+
+    result.innerHTML = `
+    <h2>Detection Result</h2>
+    <h3>Possible Disease: ${disease}</h3>
+    ${details}
+    `;
+}
+
+</script>
+
+</body>
+</html>
